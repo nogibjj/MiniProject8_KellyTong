@@ -12,6 +12,7 @@ rusqlite = "0.24"
 statrs = "0.14"
 reqwest = { version = "0.11", features = ["blocking"] }
 sys-info = "0.7"
+polars = "0.14"
 
 [dev-dependencies]
 pretty_assertions = "0.7"

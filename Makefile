@@ -1,14 +1,10 @@
-# Variables
-RUST_TARGET = target/release/Mini8
-
-# Rust targets
 rust-version:
 	@echo "Rust command-line utility versions:"
-	rustc --version 			# Rust compiler
-	cargo --version 			# Rust package manager
-	rustfmt --version			# Rust code formatter
-	rustup --version			# Rust toolchain manager
-	clippy-driver --version		# Rust linter
+	rustc --version 			#rust compiler
+	cargo --version 			#rust package manager
+	rustfmt --version			#rust code formatter
+	rustup --version			#rust toolchain manager
+	clippy-driver --version		#rust linter
 
 format:
 	cargo fmt --quiet
@@ -31,30 +27,30 @@ run:
 release:
 	cargo build --release
 
-# Python targets
-py_install:
+all: format lint test run
+
+python_install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
-py_test:
-	python3 -m pytest -vv --cov=main --cov=mylib test_*.py
+python_test:
+	python -m pytest -vv --cov=main --cov=mylib test_*.py
 
-py_format:	
+python_format:	
 	black *.py 
 
-py_lint:
+python_lint:
 	ruff check *.py mylib/*.py
 
-py_container-lint:
+python_container-lint:
 	docker run --rm -i hadolint/hadolint < Dockerfile
 
-py_deploy:
-	# Python deploy commands go here
+python_refactor: format lint
 
-# Combined targets for convenience
-all: format lint test run
-
-py_all: py_install py_lint py_test py_format py_deploy
+python_deploy:
+	#deploy goes here
+		
+python_all: install lint test format deploy
 
 generate_and_push:
 	# Add, commit, and push the generated files to GitHub

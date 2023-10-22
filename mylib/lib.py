@@ -1,7 +1,6 @@
 import pandas as pd
 
-def compute_average(data): 
-  df = pd.DataFrame(data)
+def compute_average(df): 
   overall_avg = df.mean().mean()
   print(f"Overall Average: {overall_avg}")
   column_avg = df.mean()

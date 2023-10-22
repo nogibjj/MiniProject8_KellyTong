@@ -1,0 +1,17 @@
+[package]
+name = "mini_project8_Kelly_rust"
+version = "0.1.0"
+authors = ["Kelly Tong"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+csv = "1.1"
+rusqlite = "0.24"
+statrs = "0.14"
+reqwest = { version = "0.11", features = ["blocking"] }
+sys-info = "0.7"
+
+[dev-dependencies]
+pretty_assertions = "0.7"

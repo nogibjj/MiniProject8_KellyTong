@@ -1,5 +1,5 @@
 import panda as pd
-from main import main
+from main import compute_average
 
 
 def test_compute_average():

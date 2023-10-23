@@ -18,6 +18,7 @@ evluated through the repository action.
 ### Building Process
 Python Building Process Overview
 
+<img width="890" alt="python_buildingprocess" src="https://github.com/nogibjj/MiniProject8_KellyTong/assets/142815940/56618e34-0989-4fe6-b745-1dc5b2bdb36c">
 
 Python_test
 

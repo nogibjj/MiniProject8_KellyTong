@@ -1,5 +1,8 @@
-def compute_average(df): 
-  overall_avg = df.mean().mean()
+def compute_average(df):
+  # Select only numeric columns
+  numeric_df = df.select_dtypes(include=[np.number])
+  # Compute the mean of the numeric columns
+  overall_avg = numeric_df.mean().mean()
   column_avg = df.mean()
   row_avg = df.mean(axis=5)
   return {

@@ -1,24 +1,14 @@
-fn compute_average(data: HashMap<&str, Vec<f64>>) -> (f64, HashMap<&str, f64>, Vec<f64>) {
-    let mut df = DataFrame::from(data);
-    
-    // Overall Average
-    let overall_avg = df.mean().mean();
-    println!("Overall Average: {}", overall_avg);
+use polars::prelude::*;
 
-    // Column Average
-    let mut column_avg = HashMap::new();
-    for column in df.columns() {
-        column_avg.insert(column, df.column(column).mean());
-    }
-    for (column, avg) in &column_avg {
-        println!("{}: {}", column, avg);
-    }
+fn compute_average(df: DataFrame) -> Result<HashMap<&'static str, Series>, PolarsError> {
+    let overall_avg = df.mean()?.mean();
+    let column_avg = df.mean()?;
+    let row_avg = df.mean_axis(Axis::Horizontal)?;
 
-    // Row Average
-    let row_avg = df.mean_axis(Axis::Horizontal);
-    for avg in &row_avg {
-        println!("{}", avg);
-    }
+    let mut averages = HashMap::new();
+    averages.insert("overall average", Series::new("", &[overall_avg]));
+    averages.insert("column average", column_avg);
+    averages.insert("row average", row_avg);
 
-    (overall_avg, column_avg, row_avg)
+    Ok(averages)
 }

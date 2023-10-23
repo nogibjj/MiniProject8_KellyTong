@@ -16,3 +16,12 @@ evluated through the repository action.
 ### Comparison
 
 ### Building Process
+Python Building Process Overview
+
+
+Python_test
+
+<img width="731" alt="test" src="https://github.com/nogibjj/MiniProject8_KellyTong/assets/142815940/c160b9e2-a61c-439d-8d3e-b793920e8e77">
+
+Rust Building Process Overview
+<img width="886" alt="rust_buildingprocess" src="https://github.com/nogibjj/MiniProject8_KellyTong/assets/142815940/9b5c00c9-542c-40cb-9ca4-100a8e3e4e00">

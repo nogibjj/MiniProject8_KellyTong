@@ -1,25 +1,22 @@
 extern crate polars;
 
 use polars::prelude::*;
-use std::collections::HashMap;
 use std::error::Error;
-use std::result::Result as StdResult;
 
 mod lib;
 
-fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), Box<dyn Error>> {
     let file_path = "Auto.csv";
-    let df = DataFrame::read_csv(file_path, CsvReader::default())?;
+    let df = CsvReader::from_path(file_path)?.has_header(true).finish()?;
 
     if !df.is_empty() {
         println!("DataFrame is not empty.");
 
         let avg = lib::compute_average(&df)?;
-        match (avg.get("overall average"), avg.get("column average"), avg.get("row average")) {
-            (Some(overall_avg), Some(column_avg), Some(row_avg)) => {
-                println!("overall average: {:.2}", overall_avg);
-                println!("column average: {:.2}", column_avg);
-                println!("row average: {:.2}", row_avg);
+        match (avg.get("mpg average"), avg.get("weight average")) {
+            (Some(mpg_avg), Some(weight_avg)) => {
+                println!("mpg average: {:.2}", mpg_avg);
+                println!("weight average: {:.2}", weight_avg);
             },
             _ => println!("Failed to compute some averages.")
         }
@@ -29,3 +26,7 @@ fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+
+
+

@@ -5,12 +5,12 @@ use std::result::Result as StdResult;
 pub fn compute_average(df: &DataFrame) -> StdResult<HashMap<String, f64>, polars::error::PolarsError> {
     let average_mpg = df
         .column("mpg")
-        .ok_or(polars::error::PolarsError::NotFound("mpg column not found".into()))?
+        .map_err(|_| polars::error::PolarsError::NotFound("mpg column not found".into()))?
         .mean()?;
 
     let average_weight = df
         .column("weight")
-        .ok_or(polars::error::PolarsError::NotFound("weight column not found".into()))?
+        .map_err(|_| polars::error::PolarsError::NotFound("weight column not found".into()))?
         .mean()?;
 
     let mut averages = HashMap::new();

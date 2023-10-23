@@ -2,7 +2,7 @@ from mylib.lib import compute_average
 import pandas as pd
 
 def main():
-  df=pd.read.csv("Auto.csv")
+  df=pd.read_csv("Auto.csv")
   if not df.empty:
     print("DataFrame is not empty.")
     avg = compute_average(df)

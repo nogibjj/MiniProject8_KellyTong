@@ -7,13 +7,13 @@ pub fn compute_average(df: &DataFrame) -> StdResult<HashMap<String, f64>, polars
         .column("mpg")
         .map_err(|_| polars::error::PolarsError::NotFound("mpg column not found".into()))?
         .mean()
-        .ok_or(polars::error::PolarsError::ComputeError("Failed to compute mean for mpg".into()))?;
+        .ok_or_else(|| polars::error::PolarsError::NotFound("Failed to compute mean for mpg".into()))?;
 
     let average_weight = df
         .column("weight")
         .map_err(|_| polars::error::PolarsError::NotFound("weight column not found".into()))?
         .mean()
-        .ok_or(polars::error::PolarsError::ComputeError("Failed to compute mean for weight".into()))?;
+        .ok_or_else(|| polars::error::PolarsError::NotFound("Failed to compute mean for weight".into()))?;
     
     let mut averages = HashMap::new();
     averages.insert("mpg average".to_string(), average_mpg);

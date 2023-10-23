@@ -2,19 +2,24 @@ extern crate polars;
 
 use polars::prelude::*;
 use std::error::Error;
+use std::result::Result as StdResult;
 
-fn main() -> std::result::Result<(), Box<dyn Error>> {
+mod lib;
+
+fn main() -> StdResult<(), Box<dyn Error>> {
     let file_path = "Auto.csv";
-    let df = CsvReader::from_path(file_path)?.has_header(true).finish()?;
+    
+    let df = CsvReader::from_path(file_path)?.infer_schema(None).has_header(true).finish()?;
 
     if !df.is_empty() {
         println!("DataFrame is not empty.");
 
-        let avg = mini_project8_kelly_rust::compute_average(&df)?;
-        match (avg.get("mpg average"), avg.get("weight average")) {
-            (Some(mpg_avg), Some(weight_avg)) => {
-                println!("mpg average: {:.2}", mpg_avg);
-                println!("weight average: {:.2}", weight_avg);
+        let avg = lib::compute_average(&df)?;
+        match (avg.get("overall average"), avg.get("column average"), avg.get("row average")) {
+            (Some(overall_avg), Some(column_avg), Some(row_avg)) => {
+                println!("overall average: {:.2}", overall_avg);
+                println!("column average: {:.2}", column_avg);
+                println!("row average: {:.2}", row_avg);
             },
             _ => println!("Failed to compute some averages.")
         }
@@ -24,9 +29,3 @@ fn main() -> std::result::Result<(), Box<dyn Error>> {
 
     Ok(())
 }
-After making these changes, try running cargo clippy --quiet again and see if the warnings and errors have been resolved.
-
-
-
-
-

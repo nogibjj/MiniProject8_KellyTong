@@ -4,7 +4,7 @@ use polars::prelude::*;
 use std::collections::HashMap;
 use std::error::Error;
 
-mod mylib;
+mod lib;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let file_path = "Auto.csv";

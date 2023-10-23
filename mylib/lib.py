@@ -1,3 +1,5 @@
+import numpy as np
+
 def compute_average(df):
   # Select only numeric columns
   numeric_df = df.select_dtypes(include=[np.number])

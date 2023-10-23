@@ -14,6 +14,7 @@ evluated through the repository action.
 [![Rust CI/CD](https://github.com/nogibjj/MiniProject8_KellyTong/actions/workflows/rustCI.yml/badge.svg)](https://github.com/nogibjj/MiniProject8_KellyTong/actions/workflows/rustCI.yml)
 
 ### Comparison
+Compare the running time of python actions and rust actions and conclude their efficiency. 
 
 ### Building Process
 Python Building Process Overview

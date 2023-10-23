@@ -7,7 +7,7 @@ use std::result::Result as StdResult;
 
 mod lib;
 
-fn main() -> StdResult<(), Box<dyn Error>> {
+fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     let file_path = "Auto.csv";
     let df = DataFrame::read_csv(file_path, CsvReader::default())?;
 

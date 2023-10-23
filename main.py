@@ -9,7 +9,7 @@ def main():
     print(f"overall average: {avg['overall_avg']:.2f}")
     print(f"column average: {avg['column_avg']:.2f}")
     print(f"row average: {avg['row_avg']:.2f}")
-else:
+  else:
     print("DataFrame is empty.")
 
 

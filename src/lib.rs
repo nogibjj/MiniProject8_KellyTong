@@ -1,7 +1,8 @@
 use polars::prelude::*;
 use std::collections::HashMap;
+use std::result::Result as StdResult;
 
-pub fn compute_average(df: &DataFrame) -> Result<HashMap<String, f64>, polars::error::PolarsError> {
+pub fn compute_average(df: &DataFrame) -> StdResult<HashMap<String, f64>, polars::error::PolarsError> {
     let average_mpg = df.column("mpg")?
         .mean()?
         .get(0)

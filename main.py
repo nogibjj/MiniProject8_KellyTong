@@ -1,5 +1,5 @@
 from mylib.lib import compute_average
-import panda as pd
+import pandas as pd
 
 def main():
   df=pd.read.csv("Auto.csv")

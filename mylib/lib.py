@@ -1,7 +1,7 @@
 def compute_average(df):
-  row_avg = df.mean(axis=5)
-  row_avg2 = df.mean(axis=1)
+  average_mpg = df["mpg"].mean()
+  average_weight = df["weight"].mean()
   return {
-          'weight average': row_avg,
-          'mpg average': row_avg2
+          'weight average': average_weight,
+          'mpg average': average_mpg
           }

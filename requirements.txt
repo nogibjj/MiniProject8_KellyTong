@@ -9,3 +9,4 @@ ruff==0.0.284
 psutil
 pandas==2.1.1
 psutil==5.9.6
+numpy

@@ -3,16 +3,14 @@ extern crate polars;
 use polars::prelude::*;
 use std::error::Error;
 
-mod lib;
-
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() -> std::result::Result<(), Box<dyn Error>> {
     let file_path = "Auto.csv";
     let df = CsvReader::from_path(file_path)?.has_header(true).finish()?;
 
     if !df.is_empty() {
         println!("DataFrame is not empty.");
 
-        let avg = lib::compute_average(&df)?;
+        let avg = mini_project8_kelly_rust::compute_average(&df)?;
         match (avg.get("mpg average"), avg.get("weight average")) {
             (Some(mpg_avg), Some(weight_avg)) => {
                 println!("mpg average: {:.2}", mpg_avg);
@@ -26,6 +24,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+After making these changes, try running cargo clippy --quiet again and see if the warnings and errors have been resolved.
+
 
 
 

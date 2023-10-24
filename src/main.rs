@@ -64,7 +64,7 @@ fn main() -> StdResult<(), Box<dyn Error>> {
     // Parse the CPU usage from the output
     if lines.len() >= 2 {
         let usage_str = lines[1].trim();
-        let usage_float: Result<f32, _> = usage_str.parse();
+        let usage_float: StdResult<f32, _> = usage_str.parse();
         match usage_float {
             Ok(usage) => println!("CPU Usage: {:.2}%", usage),
             Err(_) => println!("Failed to parse CPU usage"),

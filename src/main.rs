@@ -38,7 +38,7 @@ fn main() -> StdResult<(), Box<dyn Error>> {
     } else {
         println!("DataFrame is empty.");
     }
-    
+    let end_time = Instant::now();
     // Calculate the elapsed time and resource usage
     let elapsed_time = end_time.duration_since(start_time);
     println!("Total execution time: {:?}", elapsed_time); // Print the elapsed time

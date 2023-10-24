@@ -17,16 +17,17 @@ def main():
     else:
         print("DataFrame is empty.")
 
+    end_time = time.time()
+
+    # Calculate the elapsed time
+    elapsed_time = end_time - start_time
+    cpu_percent = psutil.cpu_percent()
+    memory_info = psutil.virtual_memory()
+    
+    print(f"Elapsed time: {elapsed_time:.4f} seconds")
+    print(f"CPU Usage: {cpu_percent}%")
+    print(f"Memory Usage: {memory_info.percent}%")
 
 if __name__ == "__main__":
     main()
-    end_time = time.time()
-
-# Calculate the elapsed time
-elapsed_time = end_time - start_time
-cpu_percent = psutil.cpu_percent()
-memory_info = psutil.virtual_memory()
-
-print(f"Elapsed time: {elapsed_time:.4f} seconds")
-print(f"CPU Usage: {cpu_percent}%")
-print(f"Memory Usage: {memory_info.percent}%")
+    

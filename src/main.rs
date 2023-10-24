@@ -2,16 +2,16 @@ extern crate polars;
 
 use polars::prelude::*;
 use std::error::Error;
-use std::result::Result as StdResult;
 use std::fs::File;
 use std::process::Command;
+use std::result::Result as StdResult;
 use std::time::Instant;
 
 mod lib;
 
 fn main() -> StdResult<(), Box<dyn Error>> {
     let start_time = Instant::now();
-    
+
     let file_path = "Auto.csv";
 
     let df = CsvReader::from_path(file_path)?
@@ -72,6 +72,6 @@ fn main() -> StdResult<(), Box<dyn Error>> {
     } else {
         println!("Failed to get CPU usage");
     }
-    
+
     Ok(())
 }

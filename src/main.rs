@@ -3,6 +3,9 @@ extern crate polars;
 use polars::prelude::*;
 use std::error::Error;
 use std::result::Result as StdResult;
+use std::fs::File;
+use std::process::Command;
+use std::time::Instant;
 
 mod lib;
 

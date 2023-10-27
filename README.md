@@ -15,6 +15,7 @@ evluated through the repository action.
 
 ### Comparison
 Compare the running time of python actions and rust actions and conclude their efficiency. 
+<img width="478" alt="python running time" src="https://github.com/nogibjj/MiniProject8_KellyTong/assets/142815940/56433dff-9f4f-4620-af64-00b07ddc48f5">
 
 ### Building Process
 Python Building Process Overview

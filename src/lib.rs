@@ -4,18 +4,22 @@ use std::result::Result as StdResult;
 
 pub fn compute_average(
     df: &DataFrame,
-) -> StdResult<HashMap<String, f64>, String> {
+) -> StdResult<HashMap<String, f64>, polars::error::PolarsError> {
     let average_mpg = df
         .column("mpg")
-        .map_err(|_| "mpg column not found".to_string())?
+        .map_err(|_| polars::error::PolarsError::NotFound("mpg column not found".into()))?
         .mean()
-        .ok_or_else(|| "Failed to compute mean for mpg".to_string())?;
+        .ok_or_else(|| {
+            polars::error::PolarsError::NotFound("Failed to compute mean for mpg".into())
+        })?;
 
     let average_weight = df
         .column("weight")
-        .map_err(|_| "weight column not found".to_string())?
+        .map_err(|_| polars::error::PolarsError::NotFound("weight column not found".into()))?
         .mean()
-        .ok_or_else(|| "Failed to compute mean for weight".to_string())?;
+        .ok_or_else(|| {
+            polars::error::PolarsError::NotFound("Failed to compute mean for weight".into())
+        })?;
 
     let mut averages = HashMap::new();
     averages.insert("mpg average".to_string(), average_mpg);

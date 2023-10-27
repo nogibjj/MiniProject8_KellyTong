@@ -8,7 +8,7 @@ use std::time::Instant;
 
 mod lib;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() {
     let start_time = Instant::now();
 
     let file_path = "Auto.csv";

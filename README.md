@@ -6,7 +6,8 @@ This repository compares the running time and efficiency of python and rust.
 This is done by performing the same data processing with python script and rust.
 In this case, the average of the chosen columns/variables are calculated. 
 Improvement in running time, speed, and resource usage can be analyzed and
-evluated through the repository action. 
+evluated through the repository action. Comparison of their efficiency can be 
+viewed in the comparison section in this Readme file. 
 
 ### Github Workflows
 [![Python CI/CD](https://github.com/nogibjj/MiniProject8_KellyTong/actions/workflows/pyCI.yml/badge.svg)](https://github.com/nogibjj/MiniProject8_KellyTong/actions/workflows/pyCI.yml)
